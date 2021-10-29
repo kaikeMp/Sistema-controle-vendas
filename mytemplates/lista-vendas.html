@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+
+            background-color: black;
+            color: rgb(255, 255, 255);
+        }
+
+        h1 {
+            font-family: 'sans-sarif';
+            font-size: 30px
+        }
+        h2{margin:0}
+            .left {float:left;width:45px;}
+            .right {float:left;margin:0 0 0 5px;width:215px;;
+            font-family: 'sans-sarif';
+            font-size: 14px;
+            }
+        
+        .iconDetails {
+            margin-left:2%;
+            float:left; 
+            height:40px;
+            width:40px; 
+            } 
+
+        .container2 {
+            width:270px;
+            height:auto;
+            padding:1%;
+            float:left;
+            text-align: center;
+            }
+        
+        .button {
+            background-color: #bdbdbd;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            margin: 2px 1px;
+            cursor: pointer;
+            }
+            img {
+                border-radius: 8px;
+
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <center>
+        <img src="{% static 'imagem.png' %}" alt="logo" width="200">
+        <h1>Sistema de cadastro de veículos</h1>
+        </center>
+
+        {% if user.is_authenticated %}
+        <center>
+        <p><h2>Olá, {{user.username}}.</h2>
+        <p><a href="{% url 'logout' %}" class="button"> Sair </a></p>
+        {% else %}
+        <p style="text-align:center"><a href="{% url 'login' %}" class="button"> Entrar </a></p>
+        {% endif %}
+        </center>
+
+
+    </header>
+    <center>
+        {% for v in venda %}
+        <div style="border: solid; border-radius: 15px; width: 400px">
+            <h3>{{ v.cliente }} - {{v.veiculo.marca}} {{ v.veiculo.modelo }}</h3> <a href="{% url 'recibo' v.id %}" class="button"> <b>Gerar Recibo</b></a>
+        </div><br>
+        {% endfor %}
+
+    </center>
+    <center>
+   <p><a href="{% url 'home' %}" class="button"><b>Página Inicial</b></a></p>
+    </center>
+    
+</body>
+</html>

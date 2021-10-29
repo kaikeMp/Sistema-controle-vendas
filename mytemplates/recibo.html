@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RXR MOTORS</title>
+    <style>
+        body {
+
+
+        }
+    </style>
+
+</head>
+<body>
+    <center>
+        <h1 style="color: red;">RXR MOTORS</h1>
+        <h2>RECIBO DE COMPRA E VENDA</h2>
+        <b><p id="date"></p></b>
+        <script>
+        n =  new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        document.getElementById("date").innerHTML =  d + "/" + m + "/" + y;
+        </script>
+    </center>
+    <center>
+               <div style="text-align:center; background-color: rgb(192,192,192); padding:10px; border-style: double; border-radius: 10px; width: 90px;"><b> R$ {{D.veiculo.preco}} </b></div>
+    </center>
+
+        <h3 style="text-align: center;">DADOS DO COMPRADOR</h3>
+        <div style="text-align: left; border-style: solid; padding: 10px; border-radius:15px;background-color: rgb(192,192,192)">
+            <p>Nome: <b> {{D.cliente}} </b></p>
+            <p>CPF: <b> {{D.cliente.cpf}} </b> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp RG: <b> {{ D.cliente.rg }}</b></p>
+            <p>Endereço: <b>{{D.cliente.rua}}, N {{D.cliente.num}} – {{D.cliente.bairro}} - {{D.cliente.cidade}} - {{D.cliente.estado}}</b></p>
+            <p>Telefone: <b>({{D.cliente.ddd}}) {{D.cliente.telefone}}</b></p>
+        </div>
+
+        <h3 style="text-align: center;">DADOS DO VEÍCULO</h3>
+        <div style="text-align: left; border-style: solid; padding: 10px; border-radius:15px;background-color: rgb(192,192,192)">
+            <p>Marca/Modelo: <b>{{D.veiculo.marca}} {{D.veiculo.modelo}} </b></p>
+            <p>Ano Fab./Mod: <b>{{D.veiculo.ano_fab}}/{{D.veiculo.ano_mod}}</b> &nbsp &nbsp &nbsp &nbsp Placa: <b>{{D.veiculo.placa}}</b></p>
+            <p>Cor: <b>{{D.veiculo.cor}}</b></p>
+            <p></p>
+            <p>Renavan: <b>{{D.veiculo.renavam}}</b> &nbsp &nbsp &nbsp &nbsp &nbsp  Chassis: <b>{{ D.veiculo.chassi }}</b></p>
+        </div>
+<br> <br>
+        <center>
+            <u> <h3>FORMAS DE PAGAMENTO</h3> </u>
+            <b>R$ {{D.veiculo.preco}}</b> <i>({{D.veiculo.preco_extenco}})</i> {{D.forma}}.
+        </center>
+
+                <h3 style="text-align: center;"><u>DETALHES SOBRE O VEÍCULO</u></h3>
+                <p>
+                    Peças de desgaste natural, que a garantia não cobre: Pneus, amortecedores, sistema de freio
+                completo, correias do motor, sistema de embreagem completo, palhetas dos limpadores de vidros,
+                filtros de óleo, combustı́vel e ar, velas de ignição e cabos, lâmpadas e fluidos.
+                </p>
+
+                <h3 style="text-align: center;"><u>TERMOS LEGAIS</u></h3>
+                <p><b>
+                    O veı́culo tem 03 (três) meses de garantia ou 3.000 Km para MOTOR E CÂMBIO
+                (PARTE DE FORÇA) conforme especificado pelo Código de Defesa do Consumidor
+                (Lei 8.078/90). KM: {{D.veiculo.km}}.
+                <br> <br> <br>
+                </b></p>
+
+                <p style="color: blue;">
+                    A manutenção preventiva é a melhor maneira de manter o veı́culo sempre em um bom estado
+                de funcionamento. Além disso, o fato do proprietário adiantar-se à resolução dos possı́veis danos
+                que surgirão na mecânica, ainda garante uma menor ocorrência de problemas graves no veiculo com
+                o passar do tempo.
+                </p>
+
+                <p style="color: blue;">
+                    O comprador declara para os devidos fins, neste recibo, ser o responsável legal por toda e
+                qualquer infração ou dano de qualquer natureza causada pelo condutor deste veı́culo a partir desta
+                data e hora. {{dia}} de {{mes}} de {{ano}}, {{hora}}.
+                </p>
+
+                <p style="text-align: right;">Belém, {{dia}} de {{mes}} de {{ano}}</p>
+
+    <br><br><br><br>
+
+                <p style="text-align: center;">__________________________________________________<br>
+                <b>RXR MOTORS</b><br>
+                    Vendedor</p>
+
+    <br><br><br>
+                <p style="text-align: center;">__________________________________________________<br>
+                <b>FRANCISCO XAVIER DIAS</b><br>
+                    Comprador</p>
+
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br>  <br><br><br><br><br><br><br><br>
+    <p style="text-align: center;" ><b style="color: red;" >RXR MOTORS</b> <br>
+        <b>Av. Doutor Lopo de Castro, 566, Icoaraci, Belém - PA <br>
+            CNPJ: 038.880.813/0001-59</b>
+    </p>
+</body>
+</html>

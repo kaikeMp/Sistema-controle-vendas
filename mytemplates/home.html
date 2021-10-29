@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+
+            background-color: black;
+            color: rgb(255, 255, 255);
+        }
+
+        h1 {
+            font-family: 'sans-sarif';
+            font-size: 30px
+        }
+        h2{margin:0}
+            .left {float:left;width:45px;}
+            .right {float:left;margin:0 0 0 5px;width:215px;;
+            font-family: 'sans-sarif';
+            font-size: 14px;
+            }
+        
+        .iconDetails {
+            margin-left:2%;
+            float:left; 
+            height:40px;
+            width:40px; 
+            } 
+
+        .container2 {
+            width:270px;
+            height:auto;
+            padding:1%;
+            float:left;
+            text-align: center;
+            }
+        
+        .button {
+            background-color: #bdbdbd;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            margin: 2px 1px;
+            cursor: pointer;
+            }
+            img {
+                border-radius: 8px;
+
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <center>
+        <img src="{% static 'imagem.png' %}" alt="logo" width="200">
+        <h1>Sistema de cadastro de veículos</h1>
+        </center>
+
+        {% if user.is_authenticated %}
+        <center>
+        <p><h2>Olá, {{user.username}}.</h2>
+        <p><a href="{% url 'logout' %}" class="button"> Sair </a></p>
+        {% else %}
+        <p style="text-align:center"><a href="{% url 'login' %}" class="button"> Entrar </a></p>
+        {% endif %}
+        </center>
+
+
+    </header>
+    <center>
+        {% for c in carro %}
+            <ul>
+            <div class="conteiner2" style="background: linear-gradient(153deg, rgba(0,0,0,1) 0%, rgba(255,0,0,1) 48%, rgba(0,0,0,1) 100%);
+            ;color:white;padding:20px;border-radius: 10px; width: 560px; height: 175px;">
+                <div class="left">
+                    <img srcset="{{c.foto.url}}" width="250">
+                </div>
+                <div class="right" style='margin-left:260px; width: 250px; margin-top: -7px;'>
+                    <h2>{{c.marca}} {{c.modelo}}</h2>
+                    <h3> {{c.placa}}</h3>
+                    <h3> {{c.cor}}  &emsp;&emsp;&emsp;&emsp;  {{c.ano_fab}}/{{c.ano_mod}}</h3>
+                    <h3>R${{c.preco}} &emsp; km: {{c.km}} </h3>
+                    <p> <a href="{% url 'update_veiculo' c.id %}", class="button">  <b> Editar </b> </a> </a>  <a href="{% url 'delete_veiculo' c.id %}", class="button"> <b>Deletar</b> </a></p>
+                </div>
+                </div>
+            </div>
+            </ul>
+        {% endfor %}
+    </center>
+    <center>
+   <p></p><a href="{% url 'adicionar_veiculo' %}" class="button"><b>Cadastrar Veículo</b></a><a href="{% url 'novo_cliente' %}" class="button"><b>Cadastrar Cliente</b></a><a href="{% url 'novavenda'%}", class="button"> <b>Vender</b> </a></p>
+    </center>
+    
+</body>
+</html>
